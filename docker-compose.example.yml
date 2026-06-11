@@ -1,0 +1,21 @@
+services:
+  miniparser:
+    build: .
+    image: miniparser:latest
+    container_name: miniparser
+    restart: unless-stopped
+    ports:
+      - "8080:8080"
+    environment:
+      CONFIG_PATH: /config/config.yml
+      ESP_BEARER_TOKEN: ${ESP_BEARER_TOKEN}
+      GLANCES_TOKEN: ${GLANCES_TOKEN:-}
+      IMMICH_API_KEY: ${IMMICH_API_KEY:-}
+      KOMODO_API_KEY: ${KOMODO_API_KEY:-}
+      KOMODO_API_SECRET: ${KOMODO_API_SECRET:-}
+      PROXMOX_TOKEN_ID: ${PROXMOX_TOKEN_ID:-}
+      PROXMOX_TOKEN_SECRET: ${PROXMOX_TOKEN_SECRET:-}
+      UPTIME_KUMA_API_KEY: ${UPTIME_KUMA_API_KEY:-}
+      WUD_TOKEN: ${WUD_TOKEN:-}
+    volumes:
+      - ./config.yml:/config/config.yml:ro

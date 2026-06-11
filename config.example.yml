@@ -1,0 +1,44 @@
+poll_interval_seconds: 30
+timeout_seconds: 5
+
+services:
+  glances:
+    enabled: true
+    url: "http://glances.local:61208"
+    token_env: "GLANCES_TOKEN"
+    disk_path: "/"
+
+  immich:
+    enabled: true
+    url: "http://immich.local:2283"
+    api_key_env: "IMMICH_API_KEY"
+
+  komodo:
+    enabled: true
+    url: "http://komodo.local:9120"
+    api_key_env: "KOMODO_API_KEY"
+    api_secret_env: "KOMODO_API_SECRET"
+    mode: "summary"
+
+  proxmox:
+    enabled: true
+    url: "https://proxmox.local:8006"
+    token_id_env: "PROXMOX_TOKEN_ID"
+    token_secret_env: "PROXMOX_TOKEN_SECRET"
+    verify_tls: false
+
+  uptime_kuma:
+    enabled: true
+    url: "http://uptime-kuma.local:3001"
+    api_key_env: "UPTIME_KUMA_API_KEY"
+
+  whatsupdocker:
+    enabled: true
+    url: "http://whatsupdocker.local:3000"
+    token_env: "WUD_TOKEN"
+
+  stirling:
+    enabled: true
+    url: "http://stirling.local:8080"
+    health_path: "/"
+
