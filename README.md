@@ -89,3 +89,10 @@ Run locally:
 ```bash
 ESP_BEARER_TOKEN=change-me CONFIG_PATH=config.yml .venv/bin/python -m uvicorn app.main:create_app --factory --reload --port 8080
 ```
+
+## Release
+
+1. Update the version in `pyproject.toml` and `app/__init__.py`.
+2. Commit the version bump and release-flow changes.
+3. Create and push an annotated tag, for example `git tag -a v0.10.0 -m "v0.10.0"` followed by `git push origin main v0.10.0`.
+4. Create a GitHub pre-release from the tag, for example `gh release create v0.10.0 --title v0.10.0 --generate-notes --prerelease`.

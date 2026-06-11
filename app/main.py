@@ -5,6 +5,7 @@ from contextlib import asynccontextmanager
 from fastapi import Depends, FastAPI, HTTPException, Request, status
 from fastapi.responses import JSONResponse
 
+from app import __version__
 from app.adapters import (
     GlancesAdapter,
     ImmichAdapter,
@@ -60,7 +61,7 @@ def create_app(config: AppConfig | None = None, *, start_poller: bool = True) ->
         finally:
             await poller.stop()
 
-    app = FastAPI(title="Miniparser", version="0.1.0", lifespan=lifespan)
+    app = FastAPI(title="Miniparser", version=__version__, lifespan=lifespan)
     app.state.config = app_config
     app.state.cache = cache
     app.state.poller = poller

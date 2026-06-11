@@ -3,6 +3,7 @@ name: Container
 on:
   push:
     branches: ["main"]
+    tags: ["v*"]
   pull_request:
     branches: ["main"]
 
@@ -38,6 +39,8 @@ jobs:
           images: ghcr.io/${{ github.repository_owner }}/miniparser
           tags: |
             type=ref,event=branch
+            type=ref,event=tag
+            type=semver,pattern={{version}}
             type=sha,prefix=sha-
             type=raw,value=latest,enable={{is_default_branch}}
 
