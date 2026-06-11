@@ -60,6 +60,20 @@ Each service also emits:
 - `*_age`: seconds since last successful update
 - `*_err`: short error message when the last poll failed
 
+Service-specific keys:
+
+| Service | Prefix | Keys |
+| --- | --- | --- |
+| Glances | `g` | `g_cpu`, `g_mem`, `g_swap`, `g_uptime`, optional `g_disk_pct`, optional `g_temp` |
+| Immich | `imm` | `imm_users`, `imm_photos`, `imm_videos`, `imm_storage` |
+| Komodo `summary` mode | `kom` | `kom_servers`, `kom_stacks`, `kom_containers` |
+| Komodo `containers` mode | `kom` | `kom_total`, `kom_running`, `kom_stopped`, `kom_unhealthy`, `kom_unknown` |
+| Komodo `stacks` mode | `kom` | `kom_total`, `kom_running`, `kom_down`, `kom_unhealthy`, `kom_unknown` |
+| Proxmox | `pve` | `pve_vms`, `pve_lxc`, `pve_cpu`, `pve_mem` |
+| Uptime Kuma | `kuma` | `kuma_up`, `kuma_down`, `kuma_uptime`, `kuma_incident` |
+| What's Up Docker | `wud` | `wud_monitoring`, `wud_updates` |
+| Stirling PDF | `st` | `st_ok`, `st_age`, `st_ms`, optional `st_err` |
+
 If no service has produced a successful result yet, `/api/v1/esp` returns HTTP `503` with whatever status data is available.
 
 ## Development
